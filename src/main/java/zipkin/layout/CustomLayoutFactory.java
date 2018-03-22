@@ -42,12 +42,9 @@ public class CustomLayoutFactory implements LayoutFactory, CustomLoaderLayout {
 	}
 	private static final Set<LibraryScope> LIB_DESTINATION_SCOPES = new HashSet<>(
 			Arrays.asList(
-					LibraryScope.COMPILE,
-					LibraryScope.RUNTIME,
 					LibraryScope.CUSTOM)
 	);
 
-	//TODO: Need to exclude the libs which are getting repacked
 	@Override
 	public Layout getLayout(File file) {
 		return new Layout() {
@@ -61,10 +58,8 @@ public class CustomLayoutFactory implements LayoutFactory, CustomLoaderLayout {
 				if (LIB_DESTINATION_SCOPES.contains(scope)) {
 					return "lib/";
 				}
-
 				return null;
 			}
-
 			@Override
 			public String getClassesLocation() {
 				return null;
