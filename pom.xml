@@ -18,6 +18,27 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
+	<organization>
+		<name>OpenZipkin</name>
+		<url>http://zipkin.io/</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<!-- Developer section is needed for Maven Central, but doesn't need to include each person -->
+	<developers>
+		<developer>
+			<id>openzipkin</id>
+			<name>OpenZipkin Gitter</name>
+			<url>https://gitter.im/openzipkin/zipkin</url>
+		</developer>
+	</developers>
 
 	<dependencies>
 		<dependency>
@@ -26,7 +47,12 @@
 			<version>2.0.0.RELEASE</version>
 		</dependency>
 	</dependencies>
-
+	<distributionManagement>
+		<repository>
+			<id>bintray</id>
+			<url>https://bintray.com/openzipkin/maven/zipkin-layout-factory/;publish=1</url>
+		</repository>
+	</distributionManagement>
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -35,6 +61,14 @@
 					<groupId>io.takari</groupId>
 					<artifactId>maven</artifactId>
 					<version>0.6.0</version>
+				</plugin>
+				<plugin>
+					<groupId>io.zipkin.centralsync-maven-plugin</groupId>
+					<artifactId>centralsync-maven-plugin</artifactId>
+					<version>0.1.0</version>
+					<configuration>
+						<packageName>zipkin-layout-factory</packageName>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>

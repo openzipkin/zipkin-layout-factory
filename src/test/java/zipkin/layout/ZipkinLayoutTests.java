@@ -18,9 +18,9 @@ import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-public final class CustomLayoutTests {
+public final class ZipkinLayoutTests {
 
-    private CustomLayoutTests() {
+    private ZipkinLayoutTests() {
     }
 
     public static void verify(File file, String entry) throws Exception {

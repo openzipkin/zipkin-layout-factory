@@ -1,2 +1,2 @@
 org.springframework.boot.loader.tools.LayoutFactory=\
-zipkin.layout.CustomLayoutFactory
+zipkin.layout.ZipkinLayoutFactory

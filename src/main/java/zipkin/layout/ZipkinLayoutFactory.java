@@ -22,15 +22,15 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CustomLayoutFactory implements LayoutFactory, CustomLoaderLayout {
+public class ZipkinLayoutFactory implements LayoutFactory, CustomLoaderLayout {
 
 	// Name of the layout and the same has to be specified at the client side where the layout is used
 	private String name = "custom";
 
-	public CustomLayoutFactory() {
+	public ZipkinLayoutFactory() {
 	}
 
-	public CustomLayoutFactory(String name) {
+	public ZipkinLayoutFactory(String name) {
 		this.name = name;
 	}
 
@@ -52,13 +52,13 @@ public class CustomLayoutFactory implements LayoutFactory, CustomLoaderLayout {
 	public Layout getLayout(File file) {
 		return new Layout() {
 
-		    // Since the layout is currently used only for modules, there is no launcher provided at the moment
+			// Since the layout is currently used only for modules, there is no launcher provided at the moment
 			@Override
 			public String getLauncherClassName() {
 				return null;
 			}
 
-            // If the scope of the library is CUSTOM, then the libs will be repackaged to "libs/" directory
+			// If the scope of the library is CUSTOM, then the libs will be repackaged to "libs/" directory
 			@Override
 			public String getLibraryDestination(String libraryName, LibraryScope scope) {
 				if (LIB_DESTINATION_SCOPES.contains(scope)) {

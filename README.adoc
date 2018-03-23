@@ -12,7 +12,7 @@ Include Spring boot maven plugin and modify the build task like below.
 	<artifactId>spring-boot-maven-plugin</artifactId>
 	<version>2.0.0.RELEASE</version>
 	<configuration>
-	    <layoutFactory implementation="zipkin.layout.CustomLayoutFactory">
+	    <layoutFactory implementation="zipkin.layout.ZipkinLayoutFactory">
 		    <name>custom</name>
 		</layoutFactory>
 	</configuration>
