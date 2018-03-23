@@ -18,7 +18,7 @@ Include Spring boot maven plugin and modify the build task like below.
 	</configuration>
 	<dependencies>
 	    <dependency>
-		    <groupId>io.zipkin.java</groupId>
+		    <groupId>io.zipkin.layout</groupId>
 			<artifactId>zipkin-layout-factory</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
