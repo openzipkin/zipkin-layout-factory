@@ -24,6 +24,7 @@ import java.util.Set;
 
 public class CustomLayoutFactory implements LayoutFactory, CustomLoaderLayout {
 
+	// Name of the layout and the same has to be specified at the client side where the layout is used
 	private String name = "custom";
 
 	public CustomLayoutFactory() {
@@ -37,10 +38,12 @@ public class CustomLayoutFactory implements LayoutFactory, CustomLoaderLayout {
 		this.name = name;
 	}
 
+
 	public String getName() {
 		return this.name;
 	}
-	private static final Set<LibraryScope> LIB_DESTINATION_SCOPES = new HashSet<>(
+
+	private static final Set<LibraryScope> LIB_DESTINATION_SCOPES = new HashSet<LibraryScope>(
 			Arrays.asList(
 					LibraryScope.CUSTOM)
 	);
@@ -48,11 +51,14 @@ public class CustomLayoutFactory implements LayoutFactory, CustomLoaderLayout {
 	@Override
 	public Layout getLayout(File file) {
 		return new Layout() {
+
+		    // Since the layout is currently used only for modules, there is no launcher provided at the moment
 			@Override
 			public String getLauncherClassName() {
 				return null;
 			}
 
+            // If the scope of the library is CUSTOM, then the libs will be repackaged to "libs/" directory
 			@Override
 			public String getLibraryDestination(String libraryName, LibraryScope scope) {
 				if (LIB_DESTINATION_SCOPES.contains(scope)) {
@@ -65,6 +71,7 @@ public class CustomLayoutFactory implements LayoutFactory, CustomLoaderLayout {
 				return null;
 			}
 
+			// Marking the jar as non executable
 			@Override
 			public boolean isExecutable() {
 				return false;
