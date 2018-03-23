@@ -1,0 +1,27 @@
+== Custom Layout Factory for Zipkin Modules
+
+It uses the Springboot Maven Plugin's https://docs.spring.io/spring-boot/docs/current/maven-plugin/examples/custom-layout.html[CustomLayout Factory implementation^].
+
+=== Usage
+
+Include Spring boot maven plugin and modify the build task like below.
+
+```
+<plugin>
+    <groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-maven-plugin</artifactId>
+	<version>2.0.0.RELEASE</version>
+	<configuration>
+	    <layoutFactory implementation="zipkin.layout.ZipkinLayoutFactory">
+		    <name>custom</name>
+		</layoutFactory>
+	</configuration>
+	<dependencies>
+	    <dependency>
+		    <groupId>io.zipkin.layout</groupId>
+			<artifactId>zipkin-layout-factory</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	/dependencies>
+</plugin>
+```
