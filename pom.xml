@@ -47,7 +47,7 @@
   </developers>
 
   <scm>
-    <url>https://github.com/openzipkin/centralsync-maven-plugin</url>
+    <url>https://github.com/openzipkin/zipkin-layout-factory</url>
     <connection>scm:git:https://github.com/openzipkin/zipkin-layout-factory.git</connection>
     <developerConnection>scm:git:https://github.com/openzipkin/zipkin-layout-factory.git
     </developerConnection>
@@ -136,25 +136,6 @@
                 <goals>
                   <goal>jar</goal>
                 </goals>
-              </execution>
-            </executions>
-          </plugin>
-
-          <!-- Creates javadoc jar -->
-          <plugin>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <version>${maven-javadoc-plugin.version}</version>
-            <configuration>
-              <failOnError>false</failOnError>
-              <additionalparam>-Xdoclint:none</additionalparam>
-            </configuration>
-            <executions>
-              <execution>
-                <id>attach-javadocs</id>
-                <goals>
-                  <goal>jar</goal>
-                </goals>
-                <phase>package</phase>
               </execution>
             </executions>
           </plugin>
