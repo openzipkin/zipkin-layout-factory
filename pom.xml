@@ -18,7 +18,12 @@
     <java.version>1.8</java.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+    <maven-source-plugin.version>3.0.0</maven-source-plugin.version>
+    <maven-javadoc-plugin.version>3.0.0</maven-javadoc-plugin.version>
+    <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
   </properties>
+
   <organization>
     <name>OpenZipkin</name>
     <url>http://zipkin.io/</url>
@@ -41,6 +46,30 @@
     </developer>
   </developers>
 
+  <scm>
+    <url>https://github.com/openzipkin/centralsync-maven-plugin</url>
+    <connection>scm:git:https://github.com/openzipkin/zipkin-layout-factory.git</connection>
+    <developerConnection>scm:git:https://github.com/openzipkin/zipkin-layout-factory.git
+    </developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>bintray</id>
+      <url>https://bintray.com/openzipkin/maven/zipkin-layout-factory/;publish=1</url>
+    </repository>
+    <snapshotRepository>
+      <id>jfrog-snapshots</id>
+      <url>http://oss.jfrog.org/artifactory/oss-snapshot-local</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <issueManagement>
+    <system>Github</system>
+    <url>https://github.com/openzipkin/zipkin/issues</url>
+  </issueManagement>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -48,12 +77,7 @@
       <version>2.0.0.RELEASE</version>
     </dependency>
   </dependencies>
-  <distributionManagement>
-    <repository>
-      <id>bintray</id>
-      <url>https://bintray.com/openzipkin/maven/zipkin-layout-factory/;publish=1</url>
-    </repository>
-  </distributionManagement>
+
   <build>
     <pluginManagement>
       <plugins>
@@ -63,6 +87,7 @@
           <artifactId>maven</artifactId>
           <version>0.6.0</version>
         </plugin>
+
         <plugin>
           <groupId>io.zipkin.centralsync-maven-plugin</groupId>
           <artifactId>centralsync-maven-plugin</artifactId>
@@ -71,16 +96,70 @@
             <packageName>zipkin-layout-factory</packageName>
           </configuration>
         </plugin>
+
+        <!-- Ensures checksums are added to published jars -->
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>${maven-install-plugin.version}</version>
+          <configuration>
+            <createChecksum>true</createChecksum>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>${maven-release-plugin.version}</version>
+          <configuration>
+            <useReleaseProfile>false</useReleaseProfile>
+            <releaseProfiles>release</releaseProfiles>
+            <!-- to match zipkin-scala (openzipkin/zipkin) -->
+            <tagNameFormat>@{project.version}</tagNameFormat>
+          </configuration>
+        </plugin>
+
       </plugins>
     </pluginManagement>
 
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.7.0</version>
-      </plugin>
-    </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <!-- Creates source jar -->
+          <plugin>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>${maven-source-plugin.version}</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
 
+          <!-- Creates javadoc jar -->
+          <plugin>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>${maven-javadoc-plugin.version}</version>
+            <configuration>
+              <failOnError>false</failOnError>
+              <additionalparam>-Xdoclint:none</additionalparam>
+            </configuration>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <phase>package</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
