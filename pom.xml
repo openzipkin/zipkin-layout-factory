@@ -10,18 +10,23 @@
   <packaging>jar</packaging>
 
   <name>zipkin-layout-factory</name>
-  <description>Layout Factory for Zipkin</description>
+  <description>Spring Boot Layout Factory for Zipkin</description>
+  <url>https://github.com/openzipkin/zipkin-layout-factory</url>
+  <inceptionYear>2018</inceptionYear>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>1.8</java.version>
+
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+
+    <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
     <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
-    <maven-source-plugin.version>3.0.0</maven-source-plugin.version>
+    <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+    <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
     <maven-javadoc-plugin.version>3.0.0</maven-javadoc-plugin.version>
-    <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+    <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
   </properties>
 
   <organization>
@@ -49,8 +54,7 @@
   <scm>
     <url>https://github.com/openzipkin/zipkin-layout-factory</url>
     <connection>scm:git:https://github.com/openzipkin/zipkin-layout-factory.git</connection>
-    <developerConnection>scm:git:https://github.com/openzipkin/zipkin-layout-factory.git
-    </developerConnection>
+    <developerConnection>scm:git:https://github.com/openzipkin/zipkin-layout-factory.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
@@ -67,7 +71,7 @@
 
   <issueManagement>
     <system>Github</system>
-    <url>https://github.com/openzipkin/zipkin/issues</url>
+    <url>https://github.com/openzipkin/zipkin-layout-factory/issues</url>
   </issueManagement>
 
   <dependencies>
@@ -86,6 +90,21 @@
           <groupId>io.takari</groupId>
           <artifactId>maven</artifactId>
           <version>0.6.0</version>
+        </plugin>
+
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven-compiler-plugin.version}</version>
+        </plugin>
+
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${maven-deploy-plugin.version}</version>
+        </plugin>
+
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${maven-jar-plugin.version}</version>
         </plugin>
 
         <plugin>
@@ -136,6 +155,25 @@
                 <goals>
                   <goal>jar</goal>
                 </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Creates javadoc jar -->
+          <plugin>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>${maven-javadoc-plugin.version}</version>
+            <configuration>
+              <failOnError>false</failOnError>
+              <!-- hush pedantic warnings: we don't put param and return on everything! -->
+              <doclint>none</doclint>
+            </configuration>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <phase>package</phase>
               </execution>
             </executions>
           </plugin>
