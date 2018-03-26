@@ -60,7 +60,7 @@
   <distributionManagement>
     <repository>
       <id>bintray</id>
-      <url>https://bintray.com/openzipkin/maven/zipkin-layout-factory/;publish=1</url>
+      <url>https://api.bintray.com/openzipkin/maven/zipkin-layout-factory/;publish=1</url>
     </repository>
     <snapshotRepository>
       <id>jfrog-snapshots</id>
