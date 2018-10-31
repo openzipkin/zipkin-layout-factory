@@ -32,7 +32,7 @@ public class ZipkinLayoutFactory implements LayoutFactory, CustomLoaderLayout {
           LibraryScope.CUSTOM)
   );
   // Name of the layout and the same has to be specified at the client side where the layout is used
-  private String name = "custom";
+  private String name = "zipkin";
 
   public ZipkinLayoutFactory() {
   }
