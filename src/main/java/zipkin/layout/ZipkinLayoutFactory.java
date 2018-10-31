@@ -62,10 +62,7 @@ public class ZipkinLayoutFactory implements LayoutFactory, CustomLoaderLayout {
       // If the scope of the library is CUSTOM, then the libs will be repackaged to "libs/" directory
       @Override
       public String getLibraryDestination(String libraryName, LibraryScope scope) {
-        if (LIB_DESTINATION_SCOPES.contains(scope)) {
           return "lib/";
-        }
-        return null;
       }
 
       @Override
