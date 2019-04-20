@@ -292,6 +292,9 @@
             <exclude>**/.settings/**</exclude>
             <exclude>**/dependency-reduced-pom.xml</exclude>
 
+            <!-- spring files -->
+            <exclude>**/spring.factories</exclude>
+
             <!-- git files -->
             <exclude>**/.gitignore</exclude>
             <exclude>**/.gitmodules</exclude>
@@ -305,6 +308,7 @@
 
             <!-- document files -->
             <exclude>**/*.md</exclude>
+            <exclude>**/*.adoc</exclude>
 
             <!-- Maven Wrapper generated files -->
             <exclude>.mvn/wrapper/maven-wrapper.properties</exclude>
