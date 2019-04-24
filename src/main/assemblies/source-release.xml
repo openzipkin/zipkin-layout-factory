@@ -33,6 +33,9 @@
       <outputDirectory></outputDirectory>
       <useDefaultExcludes>true</useDefaultExcludes>
       <excludes>
+        <!-- PATCH: Travis -->
+        <exclude>.travis.yml</exclude>
+
         <!-- PATCH: Jenkinsfile -->
         <exclude>Jenkinsfile</exclude>
 
