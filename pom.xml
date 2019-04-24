@@ -28,7 +28,7 @@
 
   <groupId>org.apache.zipkin.layout</groupId>
   <artifactId>zipkin-layout-factory</artifactId>
-  <version>0.0.5-SNAPSHOT</version>
+  <version>0.0.5</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -72,7 +72,7 @@
     <url>https://github.com/apache/incubator-zipkin-layout-factory</url>
     <connection>scm:git:https://github.com/apache/incubator-zipkin-layout-factory.git</connection>
     <developerConnection>scm:git:https://github.com/apache/incubator-zipkin-layout-factory.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>v0.0.5</tag>
   </scm>
 
   <!-- Developer section is needed for Maven Central, but doesn't need to include each person -->
