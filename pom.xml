@@ -161,17 +161,6 @@
         </plugin>
 
         <plugin>
-          <artifactId>maven-release-plugin</artifactId>
-          <version>${maven-release-plugin.version}</version>
-          <configuration>
-            <useReleaseProfile>false</useReleaseProfile>
-            <releaseProfiles>release</releaseProfiles>
-            <!-- to match zipkin-scala (openzipkin/zipkin) -->
-            <tagNameFormat>@{project.version}</tagNameFormat>
-          </configuration>
-        </plugin>
-
-        <plugin>
           <artifactId>maven-javadoc-plugin</artifactId>
           <!-- inherit version from org.apache:parent -->
           <configuration>
