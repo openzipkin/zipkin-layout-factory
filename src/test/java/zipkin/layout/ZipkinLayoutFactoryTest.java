@@ -16,25 +16,17 @@
  */
 package zipkin.layout;
 
-import java.io.File;
-import java.util.Enumeration;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import org.junit.Test;
 
-public final class ZipkinLayoutTests {
+import static org.assertj.core.api.Assertions.assertThat;
 
-  private ZipkinLayoutTests() {
-  }
+public class ZipkinLayoutFactoryTest {
+  ZipkinLayoutFactory layoutFactory = new ZipkinLayoutFactory();
 
-  public static void verify(File file, String entry) throws Exception {
-    try (ZipFile zipFile = new ZipFile(file)) {
-      Enumeration<? extends ZipEntry> entries = zipFile.entries();
-      while (entries.hasMoreElements()) {
-        if (entries.nextElement().getName().equals(entry)) {
-          return;
-        }
-      }
-      throw new AssertionError("No entry " + entry);
-    }
+  @Test public void name() {
+    assertThat(layoutFactory.getName()).isEqualTo("zipkin");
+
+    layoutFactory.setName("ZipKin");
+    assertThat(layoutFactory.getName()).isEqualTo("ZipKin");
   }
 }

@@ -19,9 +19,6 @@ package zipkin.layout;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 import org.springframework.boot.loader.tools.CustomLoaderLayout;
 import org.springframework.boot.loader.tools.Layout;
 import org.springframework.boot.loader.tools.LayoutFactory;
@@ -29,11 +26,6 @@ import org.springframework.boot.loader.tools.LibraryScope;
 import org.springframework.boot.loader.tools.LoaderClassesWriter;
 
 public class ZipkinLayoutFactory implements LayoutFactory, CustomLoaderLayout {
-
-  private static final Set<LibraryScope> LIB_DESTINATION_SCOPES = new HashSet<LibraryScope>(
-      Arrays.asList(
-          LibraryScope.CUSTOM)
-  );
   // Name of the layout and the same has to be specified at the client side where the layout is used
   private String name = "zipkin";
 
@@ -65,7 +57,7 @@ public class ZipkinLayoutFactory implements LayoutFactory, CustomLoaderLayout {
       // If the scope of the library is CUSTOM, then the libs will be repackaged to "libs/" directory
       @Override
       public String getLibraryDestination(String libraryName, LibraryScope scope) {
-          return "lib/";
+        return "lib/";
       }
 
       @Override
