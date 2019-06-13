@@ -36,7 +36,7 @@
     </server>
     <server>
       <id>github.com</id>
-      <username>zipkinci</username>
+      <username>${env.GH_USER}</username>
       <password>${env.GH_TOKEN}</password>
     </server>
   </servers>
