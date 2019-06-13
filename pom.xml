@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Licensed to the Apache Software Foundation (ASF) under one or more
-    contributor license agreements.  See the NOTICE file distributed with
-    this work for additional information regarding copyright ownership.
-    The ASF licenses this file to You under the Apache License, Version 2.0
-    (the "License"); you may not use this file except in compliance with
-    the License.  You may obtain a copy of the License at
+    Copyright 2018-2019 The OpenZipkin Authors
 
-        http://www.apache.org/licenses/LICENSE-2.0
+    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+    in compliance with the License. You may obtain a copy of the License at
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software distributed under the License
+    is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+    or implied. See the License for the specific language governing permissions and limitations under
+    the License.
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.apache</groupId>
-    <artifactId>apache</artifactId>
-    <version>21</version>
-  </parent>
-
-  <groupId>org.apache.zipkin.layout</groupId>
+  <groupId>io.zipkin.layout</groupId>
   <artifactId>zipkin-layout-factory</artifactId>
   <version>0.0.6-SNAPSHOT</version>
   <packaging>jar</packaging>
+
+  <name>zipkin-layout-factory</name>
+  <description>Spring Boot Layout Factory for Zipkin</description>
+  <url>https://github.com/openzipkin/zipkin-layout-factory</url>
+  <inceptionYear>2018</inceptionYear>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -41,23 +37,19 @@
     <maven.compiler.target>1.8</maven.compiler.target>
 
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-    <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+    <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     <maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
     <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
-    <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+    <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
+    <maven-javadoc-plugin.version>3.1.0</maven-javadoc-plugin.version>
     <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
     <license-maven-plugin.version>3.0</license-maven-plugin.version>
     <maven-failsafe-plugin.version>3.0.0-M3</maven-failsafe-plugin.version>
   </properties>
 
-  <name>zipkin-layout-factory</name>
-  <description>Spring Boot Layout Factory for Apache Zipkin (incubating)</description>
-  <url>https://github.com/apache/incubator-zipkin-layout-factory</url>
-  <inceptionYear>2018</inceptionYear>
-
   <organization>
-    <name>The Apache Software Foundation</name>
-    <url>http://www.apache.org/</url>
+    <name>OpenZipkin</name>
+    <url>http://zipkin.io/</url>
   </organization>
 
   <licenses>
@@ -68,13 +60,6 @@
     </license>
   </licenses>
 
-  <scm>
-    <url>https://github.com/apache/incubator-zipkin-layout-factory</url>
-    <connection>scm:git:https://github.com/apache/incubator-zipkin-layout-factory.git</connection>
-    <developerConnection>scm:git:https://github.com/apache/incubator-zipkin-layout-factory.git</developerConnection>
-    <tag>HEAD</tag>
-  </scm>
-
   <!-- Developer section is needed for Maven Central, but doesn't need to include each person -->
   <developers>
     <developer>
@@ -84,42 +69,34 @@
     </developer>
   </developers>
 
-  <mailingLists>
-    <mailingList>
-      <name>Zipkin Developer List</name>
-      <post>dev@zipkin.apache.org</post>
-      <subscribe>dev-subscribe@zipkin.apache.org</subscribe>
-      <unsubscribe>dev-unsubscribe@zipkin.apache.org</unsubscribe>
-    </mailingList>
-    <mailingList>
-      <name>Zipkin Commits</name>
-      <post>commits@zipkin.apache.org</post>
-      <subscribe>commits-subscribe@zipkin.apache.org</subscribe>
-      <unsubscribe>commits-unsubscribe@zipkin.apache.org</unsubscribe>
-    </mailingList>
-  </mailingLists>
+  <scm>
+    <url>https://github.com/openzipkin/zipkin-layout-factory</url>
+    <connection>scm:git:https://github.com/openzipkin/zipkin-layout-factory.git</connection>
+    <developerConnection>scm:git:https://github.com/openzipkin/zipkin-layout-factory.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
 
   <distributionManagement>
     <repository>
-      <id>apache.releases.https</id>
-      <url>https://repository.apache.org/service/local/staging/deploy/maven2</url>
+      <id>bintray</id>
+      <url>https://api.bintray.com/openzipkin/maven/zipkin-layout-factory/;publish=1</url>
     </repository>
     <snapshotRepository>
-      <id>apache.snapshots.https</id>
-      <url>https://repository.apache.org/content/repositories/snapshots/</url>
+      <id>jfrog-snapshots</id>
+      <url>http://oss.jfrog.org/artifactory/oss-snapshot-local</url>
     </snapshotRepository>
   </distributionManagement>
 
   <issueManagement>
     <system>Github</system>
-    <url>https://github.com/apache/incubator-zipkin-layout-factory/issues</url>
+    <url>https://github.com/openzipkin/zipkin-layout-factory/issues</url>
   </issueManagement>
 
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-loader-tools</artifactId>
-      <version>2.1.4.RELEASE</version>
+      <version>2.1.5.RELEASE</version>
     </dependency>
 
     <dependency>
@@ -143,10 +120,15 @@
         <plugin>
           <groupId>io.takari</groupId>
           <artifactId>maven</artifactId>
-          <version>0.7.5</version>
+          <version>0.7.6</version>
           <configuration>
             <maven>3.6.1</maven>
           </configuration>
+        </plugin>
+
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven-compiler-plugin.version}</version>
         </plugin>
 
         <plugin>
@@ -161,40 +143,33 @@
         </plugin>
 
         <plugin>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <!-- inherit version from org.apache:parent -->
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${maven-jar-plugin.version}</version>
+        </plugin>
+
+        <plugin>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>${maven-release-plugin.version}</version>
           <configuration>
-            <failOnError>false</failOnError>
-            <!-- hush pedantic warnings: we don't put param and return on everything! -->
-            <doclint>none</doclint>
+            <useReleaseProfile>false</useReleaseProfile>
+            <releaseProfiles>release</releaseProfiles>
+            <!-- to match zipkin-scala (openzipkin/zipkin) -->
+            <tagNameFormat>@{project.version}</tagNameFormat>
           </configuration>
         </plugin>
 
+        <plugin>
+          <groupId>io.zipkin.centralsync-maven-plugin</groupId>
+          <artifactId>centralsync-maven-plugin</artifactId>
+          <version>0.1.0</version>
+          <configuration>
+            <packageName>zipkin-layout-factory</packageName>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
 
     <plugins>
-      <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-          <version>${maven-jar-plugin.version}</version>
-      </plugin>
-
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>${maven-failsafe-plugin.version}</version>
-      </plugin>
-
-      <plugin>
-        <artifactId>maven-install-plugin</artifactId>
-        <version>3.0.0-M1</version>
-      </plugin>
-
-      <!-- Uploads occur as a last step (which also adds checksums) -->
-      <plugin>
-        <artifactId>maven-deploy-plugin</artifactId>
-        <version>3.0.0-M1</version>
-      </plugin>
-
       <plugin>
         <groupId>com.mycila</groupId>
         <artifactId>license-maven-plugin</artifactId>
@@ -214,16 +189,19 @@
             <exclude>etc/header.txt</exclude>
             <exclude>**/.idea/**</exclude>
             <exclude>LICENSE</exclude>
-            <exclude>DISCLAIMER</exclude>
-            <exclude>DEPENDENCIES</exclude>
-            <exclude>NOTICE</exclude>
-            <exclude>Jenkinsfile</exclude>
             <exclude>**/*.md</exclude>
             <exclude>**/*.adoc</exclude>
             <exclude>**/spring.factories</exclude>
           </excludes>
           <strictCheck>true</strictCheck>
         </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>com.mycila</groupId>
+            <artifactId>license-maven-plugin-git</artifactId>
+            <version>${license-maven-plugin.version}</version>
+          </dependency>
+        </dependencies>
         <executions>
           <execution>
             <goals>
@@ -253,77 +231,43 @@
           </execution>
         </executions>
       </plugin>
-
-      <plugin>
-        <groupId>org.apache.rat</groupId>
-        <artifactId>apache-rat-plugin</artifactId>
-        <version>0.13</version>
-        <configuration>
-          <excludes>
-            <exclude>**/target/**</exclude>
-
-            <!-- IDE files -->
-            <exclude>**/*.iml</exclude>
-            <exclude>**/.idea/**</exclude>
-            <exclude>**/*.classpath</exclude>
-            <exclude>**/.project</exclude>
-            <exclude>**/.settings/**</exclude>
-            <exclude>**/dependency-reduced-pom.xml</exclude>
-
-            <!-- spring files -->
-            <exclude>**/spring.factories</exclude>
-
-            <!-- git files -->
-            <exclude>**/.gitignore</exclude>
-            <exclude>**/.gitmodules</exclude>
-            <exclude>**/.git/**</exclude>
-
-            <!-- CI files -->
-            <exclude>**/.travis.yml</exclude>
-
-            <!-- GitHub files -->
-            <exclude>**/.github/**</exclude>
-
-            <!-- document files -->
-            <exclude>**/*.md</exclude>
-            <exclude>**/*.adoc</exclude>
-
-            <!-- Maven Wrapper generated files -->
-            <exclude>.mvn/wrapper/maven-wrapper.properties</exclude>
-          </excludes>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>verify</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
-
   </build>
 
   <profiles>
     <profile>
-      <id>apache-release</id>
+      <id>release</id>
       <build>
         <plugins>
+          <!-- Creates source jar -->
           <plugin>
-            <artifactId>maven-assembly-plugin</artifactId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>${maven-source-plugin.version}</version>
             <executions>
               <execution>
-                <id>source-release-assembly</id>
-                <configuration>
-                  <!-- make the source release zip includes the word incubating -->
-                  <finalName>apache-zipkin-layout-factory-incubating-${project.version}</finalName>
-                  <descriptors>
-                    <descriptor>src/main/assemblies/source-release.xml</descriptor>
-                  </descriptors>
-                  <!-- don't inherit the source-release as we are overriding it -->
-                  <descriptorRefs combine.self="override" />
-                </configuration>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Creates javadoc jar -->
+          <plugin>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>${maven-javadoc-plugin.version}</version>
+            <configuration>
+              <failOnError>false</failOnError>
+              <!-- hush pedantic warnings: we don't put param and return on everything! -->
+              <doclint>none</doclint>
+            </configuration>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <phase>package</phase>
               </execution>
             </executions>
           </plugin>
