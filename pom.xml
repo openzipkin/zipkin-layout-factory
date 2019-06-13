@@ -19,7 +19,7 @@
 
   <groupId>io.zipkin.layout</groupId>
   <artifactId>zipkin-layout-factory</artifactId>
-  <version>0.0.6-SNAPSHOT</version>
+  <version>0.0.5</version>
   <packaging>jar</packaging>
 
   <name>zipkin-layout-factory</name>
@@ -73,7 +73,7 @@
     <url>https://github.com/openzipkin/zipkin-layout-factory</url>
     <connection>scm:git:https://github.com/openzipkin/zipkin-layout-factory.git</connection>
     <developerConnection>scm:git:https://github.com/openzipkin/zipkin-layout-factory.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>0.0.5</tag>
   </scm>
 
   <distributionManagement>
