@@ -1,6 +1,10 @@
 == Custom Layout Factory for Zipkin Modules
+Zipkin Layout Factory is an assembly that allows extensions, such as custom collectors or storage implementations.
 
-It uses the Springboot Maven Plugin's https://docs.spring.io/spring-boot/docs/current/maven-plugin/examples/custom-layout.html[CustomLayout Factory implementation^].
+This repository includes a spring-boot-plugin layout which creates artifacts of type
+module. spring-boot servers can load these using PropertiesLoader.
+
+This plugin uses the Spring Boot's https://docs.spring.io/spring-boot/docs/current/maven-plugin/examples/custom-layout.html[CustomLayout Factory implementation^].
 
 === Usage
 
