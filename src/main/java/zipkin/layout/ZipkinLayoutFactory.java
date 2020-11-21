@@ -1,5 +1,5 @@
 /*
- * Copyright 2018-2019 The OpenZipkin Authors
+ * Copyright 2018-2020 The OpenZipkin Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -41,37 +41,31 @@ public class ZipkinLayoutFactory implements LayoutFactory, CustomLoaderLayout {
     this.name = name;
   }
 
-  @Override
-  public Layout getLayout(File file) {
+  @Override public Layout getLayout(File file) {
     return new Layout() {
 
       // Since the layout is currently used only for modules, there is no launcher provided at the moment
-      @Override
-      public String getLauncherClassName() {
+      @Override public String getLauncherClassName() {
         return null;
       }
 
       // If the scope of the library is CUSTOM, then the libs will be repackaged to "libs/" directory
-      @Override
-      public String getLibraryDestination(String libraryName, LibraryScope scope) {
+      @Override public String getLibraryDestination(String libraryName, LibraryScope scope) {
         return "lib/";
       }
 
-      @Override
-      public String getClassesLocation() {
+      @Override public String getClassesLocation() {
         return null;
       }
 
       // Marking the jar as non executable
-      @Override
-      public boolean isExecutable() {
+      @Override public boolean isExecutable() {
         return false;
       }
     };
   }
 
-  @Override
-  public void writeLoadedClasses(LoaderClassesWriter writer) throws IOException {
+  @Override public void writeLoadedClasses(LoaderClassesWriter writer) throws IOException {
     writer.writeEntry(this.name, new ByteArrayInputStream(new byte[0]));
   }
 }
