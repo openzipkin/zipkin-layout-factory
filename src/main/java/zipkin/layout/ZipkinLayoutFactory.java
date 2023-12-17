@@ -1,5 +1,5 @@
 /*
- * Copyright 2018-2020 The OpenZipkin Authors
+ * Copyright 2018-2023 The OpenZipkin Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -50,12 +50,20 @@ public class ZipkinLayoutFactory implements LayoutFactory, CustomLoaderLayout {
       }
 
       // If the scope of the library is CUSTOM, then the libs will be repackaged to "libs/" directory
-      @Override public String getLibraryDestination(String libraryName, LibraryScope scope) {
+      @Override public String getLibraryLocation(String libraryName, LibraryScope scope) {
         return "lib/";
       }
 
       @Override public String getClassesLocation() {
-        return null;
+        return "classes/";
+      }
+
+      @Override public String getClasspathIndexFileLocation() {
+        return Layout.super.getClasspathIndexFileLocation();
+      }
+
+      @Override public String getLayersIndexFileLocation() {
+        return Layout.super.getLayersIndexFileLocation();
       }
 
       // Marking the jar as non executable
